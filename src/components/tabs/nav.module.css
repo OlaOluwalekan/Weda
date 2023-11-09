@@ -1,0 +1,25 @@
+.main {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: var(--primaryColor);
+  /* padding: 10px 0; */
+}
+
+.main > nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+@media screen and (min-width: 700px) {
+  .main {
+    width: 200px;
+    height: 100vh;
+  }
+
+  .main > nav {
+    display: flex;
+    flex-direction: column;
+    /* line-height: 40px; */
+  }
+}
