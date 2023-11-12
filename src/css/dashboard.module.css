@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.main > div {
+  width: 90%;
+}
+
+.search-and-user-nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}

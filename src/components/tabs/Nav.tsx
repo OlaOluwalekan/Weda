@@ -1,14 +1,12 @@
 import Tab from './Tab'
 import tablist from './tablist'
 import styles from './nav.module.css'
-import LogoWrapper from './LogoWrapper'
+import Logo from './Logo'
 
 const Nav = () => {
   return (
     <div className={styles.main}>
-      <LogoWrapper>
-        <h1>Logo</h1>
-      </LogoWrapper>
+      <Logo isVisible={false} />
       <nav>
         {tablist.map((tab) => {
           return <Tab key={tab.id} {...tab} />

@@ -15,11 +15,20 @@
   .main {
     width: 200px;
     height: 100vh;
+    left: 0;
+    top: 0;
   }
 
   .main > nav {
     display: flex;
     flex-direction: column;
+    border-top: 1px solid blue;
     /* line-height: 40px; */
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .main {
+    width: 300px;
   }
 }

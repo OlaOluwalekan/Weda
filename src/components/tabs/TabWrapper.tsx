@@ -15,11 +15,12 @@ const TabWrapper = styled(Link)`
     color: var(--primaryColor);
     background-color: white;
   }
+
   @media screen and (min-width: 700px) {
     flex-direction: row;
     justify-content: flex-start;
-    line-height: 50px;
-    font-size: 20px;
+    line-height: 30px;
+    font-size: 16px;
     padding-left: 20px;
     span {
       display: flex;
@@ -28,6 +29,11 @@ const TabWrapper = styled(Link)`
       margin-right: 20px;
       /* background-color: red; */
     }
+  }
+
+  @media screen and (min-width: 900px) {
+    line-height: 35px;
+    font-size: 18px;
   }
 `
 
