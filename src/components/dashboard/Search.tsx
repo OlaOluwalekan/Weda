@@ -1,11 +1,16 @@
 import styled from 'styled-components'
 import { FaSearch } from 'react-icons/fa'
+import { FormEvent, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { getCurrentData } from '../../features/weatherSlice'
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
+import store from '../../store'
 
 interface searchProps {
   $isVisible: boolean
 }
 
-const SearchWrapper = styled.div<searchProps>`
+const SearchWrapper = styled.form<searchProps>`
   display: ${(props) => (props.$isVisible ? 'flex' : 'none')};
   align-items: center;
   flex-grow: 1;
@@ -47,13 +52,36 @@ const SearchWrapper = styled.div<searchProps>`
   }
 `
 
+// Define the RootState type
+type RootState = ReturnType<typeof store.getState>
+
+// Define the type for the thunk action
+// type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, AnyAction>;
+
+// Define the type for the dispatch function
+type AppDispatch = ThunkDispatch<RootState, void, AnyAction>
+
 const Search = ({ isVisible }: { isVisible: boolean }) => {
+  const [searchValue, setSearchValue] = useState('')
+  const dispatch: AppDispatch = useDispatch()
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    dispatch(getCurrentData(searchValue || '53.1,-0.13'))
+    console.log(searchValue)
+  }
+
   return (
-    <SearchWrapper $isVisible={isVisible}>
+    <SearchWrapper $isVisible={isVisible} onSubmit={handleSubmit}>
       <span>
         <FaSearch />
       </span>
-      <input type='text' placeholder='search' />
+      <input
+        type='text'
+        placeholder='search'
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+      />
     </SearchWrapper>
   )
 }
